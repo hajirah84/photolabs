@@ -26,23 +26,16 @@ const samplePhotos = [
   }
 ];
 
-// ✅ Make sure return is INSIDE the App function
 const App = () => {
   return (
     <div className="App">
       {samplePhotos.map((photo) => (
-        <PhotoListItem
-          key={photo.id}
-          id={photo.id}
-          imageSource={photo.imageSource}
-          profile={photo.profile}
-          username={photo.username}
-          location={photo.location}
-        />
+        <PhotoListItem key={photo.id} photo={photo} />
       ))}
     </div>
   );
 };
 
 export default App;
+
 
