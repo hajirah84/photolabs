@@ -1,8 +1,10 @@
-import "../styles/PhotoList.scss";
+import React from 'react';
+import PhotoListItem from './PhotoListItem';
+import '../styles/PhotoList.scss';
 
 const sampleDataForPhotoList = [
   {
-    id: 1,
+    id: "1",
     location: {
       city: "Montreal",
       country: "Canada",
@@ -12,13 +14,14 @@ const sampleDataForPhotoList = [
       regular: "/Image-1-Regular.jpeg",
     },
     user: {
+      id: "1",
       username: "exampleuser",
       name: "Joe Example",
       profile: "/profile-1.jpg",
     },
   },
   {
-    id: 2,
+    id: "2",
     location: {
       city: "Toronto",
       country: "Canada",
@@ -28,13 +31,14 @@ const sampleDataForPhotoList = [
       regular: "/Image-2-Regular.jpeg",
     },
     user: {
+      id: "2",
       username: "exampleuser",
       name: "Joe Example",
       profile: "/profile-1.jpg",
     },
   },
   {
-    id: 3,
+    id: "3",
     location: {
       city: "Ottawa",
       country: "Canada",
@@ -44,6 +48,7 @@ const sampleDataForPhotoList = [
       regular: "/Image-3-Regular.jpeg",
     },
     user: {
+      id: "3",
       username: "exampleuser",
       name: "Joe Example",
       profile: "/profile-1.jpg",
@@ -54,9 +59,22 @@ const sampleDataForPhotoList = [
 const PhotoList = () => {
   return (
     <ul className="photo-list">
-      {/* Insert React */}
+      {sampleDataForPhotoList.map((photo) => (
+        <li key={photo.id}>
+          <PhotoListItem
+            photo={{
+              id: photo.id,
+              imageSource: photo.urls.regular,
+              profile: photo.user.profile,
+              username: photo.user.name,
+              location: photo.location,
+            }}
+          />
+        </li>
+      ))}
     </ul>
   );
 };
 
 export default PhotoList;
+
