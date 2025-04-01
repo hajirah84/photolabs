@@ -2,27 +2,47 @@ import React from 'react';
 import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
 
-const sampleDataForPhotoListItem = {
-  id: "1",
-  location: {
-    city: "Montreal",
-    country: "Canada",
+const samplePhotos = [
+  {
+    id: "1",
+    imageSource: "/Image-1-Regular.jpeg",
+    profile: "/profile-1.jpg",
+    username: "Joe Example",
+    location: { city: "Montreal", country: "Canada" }
   },
-  imageSource: "/Image-1-Regular.jpeg",   // ✅ no need for PUBLIC_URL
-  username: "Joe Example",
-  profile: "/profile-1.jpg",
+  {
+    id: "2",
+    imageSource: "/Image-2-Regular.jpeg",
+    profile: "/profile-2.jpg",
+    username: "Jane Snapshot",
+    location: { city: "Toronto", country: "Canada" }
+  },
+  {
+    id: "3",
+    imageSource: "/Image-3-Regular.jpeg",
+    profile: "/profile-3.jpg",
+    username: "Alex Lens",
+    location: { city: "Vancouver", country: "Canada" }
+  }
+];
+
+// ✅ Make sure return is INSIDE the App function
+const App = () => {
+  return (
+    <div className="App">
+      {samplePhotos.map((photo) => (
+        <PhotoListItem
+          key={photo.id}
+          id={photo.id}
+          imageSource={photo.imageSource}
+          profile={photo.profile}
+          username={photo.username}
+          location={photo.location}
+        />
+      ))}
+    </div>
+  );
 };
 
-const App = () => (
-  <div className="App">
-    <PhotoListItem
-      id={sampleDataForPhotoListItem.id}
-      imageSource={sampleDataForPhotoListItem.imageSource}
-      profile={sampleDataForPhotoListItem.profile}
-      username={sampleDataForPhotoListItem.username}
-      location={sampleDataForPhotoListItem.location}
-    />
-  </div>
-);
-
 export default App;
+
