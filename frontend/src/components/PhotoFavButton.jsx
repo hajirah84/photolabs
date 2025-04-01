@@ -7,7 +7,6 @@ const PhotoFavButton = () => {
 
   const toggleLike = () => {
     setIsLiked(prev => !prev);
-    console.log("Heart clicked! Liked:", !isLiked);
   };
 
   return (
