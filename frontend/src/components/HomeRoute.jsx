@@ -3,18 +3,16 @@ import TopNavigationBar from './TopNavigationBar';
 import PhotoList from './PhotoList';
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = () => {
+const HomeRoute = ({ photos, topics }) => {
   return (
     <div className="home-route">
-      {/* ✅ Rendering the top navigation */}
-      <TopNavigationBar />
-
-      {/* ✅ Rendering the photo grid */}
-      <PhotoList />
+      <TopNavigationBar topics={topics} />
+      <PhotoList photos={photos} />
     </div>
   );
 };
 
 export default HomeRoute;
+
 
 
