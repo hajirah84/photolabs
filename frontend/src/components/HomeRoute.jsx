@@ -6,11 +6,15 @@ import '../styles/HomeRoute.scss';
 const HomeRoute = () => {
   return (
     <div className="home-route">
+      {/* ✅ Rendering the top navigation */}
       <TopNavigationBar />
+
+      {/* ✅ Rendering the photo grid */}
       <PhotoList />
     </div>
   );
 };
 
 export default HomeRoute;
+
 
