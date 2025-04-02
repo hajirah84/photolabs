@@ -2,19 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ photo, isLiked, toggleLike }) => {
-  const handleClick = () => toggleLike(photo.id);
+const PhotoListItem = ({ photo, isLiked, toggleLike, onClick }) => {
+  const handleLikeClick = () => toggleLike(photo.id);
 
   return (
-    <div className="photo-list__item">
+    <div className="photo-list__item" onClick={onClick}>
       <div style={{ position: 'relative' }}>
-        <img className="photo-list__image" src={photo.imageSource} alt="Main" />
-        <div style={{ position: 'absolute', top: 8, right: 8 }}>
-          <PhotoFavButton isLiked={isLiked} onClick={handleClick} />
+        <img
+          className="photo-list__image"
+          src={photo.imageSource}
+          alt="Main"
+        />
+        <div
+          style={{ position: 'absolute', top: 8, right: 8 }}
+          onClick={(e) => {
+            e.stopPropagation(); // 👈 Prevent modal from opening when clicking heart
+            handleLikeClick();
+          }}
+        >
+          <PhotoFavButton isLiked={isLiked} onClick={handleLikeClick} />
         </div>
       </div>
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={photo.profile} alt="User profile" />
+        <img
+          className="photo-list__user-profile"
+          src={photo.profile}
+          alt="User profile"
+        />
         <div className="photo-list__user-info">
           <div>{photo.username}</div>
           <div className="photo-list__user-location">
@@ -25,6 +39,7 @@ const PhotoListItem = ({ photo, isLiked, toggleLike }) => {
     </div>
   );
 };
+
 
 PhotoListItem.propTypes = {
   photo: PropTypes.object.isRequired,

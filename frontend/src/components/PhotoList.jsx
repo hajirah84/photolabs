@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
 
-const PhotoList = ({ photos, likedPhotos, toggleLike }) => {
+const PhotoList = ({ photos, likedPhotos, toggleLike, onPhotoClick }) => {
   return (
     <ul className="photo-list">
       {photos.map((photo) => (
@@ -18,6 +18,7 @@ const PhotoList = ({ photos, likedPhotos, toggleLike }) => {
             }}
             isLiked={likedPhotos.includes(photo.id)}
             toggleLike={toggleLike}
+            onClick={() => onPhotoClick(photo)} // 👈 Handle click
           />
         </li>
       ))}
