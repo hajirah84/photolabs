@@ -1,6 +1,6 @@
 import React from 'react';
-import TopNavigationBar from './TopNavigationBar';
-import PhotoList from './PhotoList';
+import TopNavigationBar from '../components/TopNavigationBar';
+import PhotoList from '../components/PhotoList';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = ({ photos, topics }) => {
@@ -13,6 +13,7 @@ const HomeRoute = ({ photos, topics }) => {
 };
 
 export default HomeRoute;
+
 
 
 
