@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/PhotoDetailsModal.scss';
 
-const PhotoDetailsModal = ({ onClose }) => {
+const PhotoDetailsModal = ({ onClose, photo }) => {
+  useEffect(() => {
+    console.log('Selected photo:', photo); //  log the photo data
+  }, [photo]);
+
   return (
     <div className="photo-details-modal">
       <button
@@ -11,9 +15,10 @@ const PhotoDetailsModal = ({ onClose }) => {
         ×
       </button>
 
-      {/* More modal content will go here in future steps */}
+      
     </div>
   );
 };
 
 export default PhotoDetailsModal;
+

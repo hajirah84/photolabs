@@ -32,13 +32,17 @@ const App = () => {
       />
 
       {selectedPhoto && (
-        <PhotoDetailsModal onClose={() => setSelectedPhoto(null)} />
+        <PhotoDetailsModal
+          photo={selectedPhoto} //  pass photo object
+          onClose={() => setSelectedPhoto(null)}
+        />
       )}
     </div>
   );
 };
 
 export default App;
+
 
 
 
