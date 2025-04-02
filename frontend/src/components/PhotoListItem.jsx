@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = ({ photo, isLiked, toggleLike }) => {
@@ -11,8 +13,6 @@ const PhotoListItem = ({ photo, isLiked, toggleLike }) => {
           <PhotoFavButton isLiked={isLiked} onClick={handleClick} />
         </div>
       </div>
-
-      {/* photographer details */}
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.profile} alt="User profile" />
         <div className="photo-list__user-info">
@@ -26,6 +26,13 @@ const PhotoListItem = ({ photo, isLiked, toggleLike }) => {
   );
 };
 
+PhotoListItem.propTypes = {
+  photo: PropTypes.object.isRequired,
+  isLiked: PropTypes.bool.isRequired,
+  toggleLike: PropTypes.func.isRequired,
+};
+
+export default PhotoListItem;
 
 
 

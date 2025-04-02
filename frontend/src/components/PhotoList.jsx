@@ -1,3 +1,8 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import PhotoListItem from './PhotoListItem';
+import '../styles/PhotoList.scss';
+
 const PhotoList = ({ photos, likedPhotos, toggleLike }) => {
   return (
     <ul className="photo-list">
@@ -20,6 +25,13 @@ const PhotoList = ({ photos, likedPhotos, toggleLike }) => {
   );
 };
 
+PhotoList.propTypes = {
+  photos: PropTypes.array.isRequired,
+  likedPhotos: PropTypes.array.isRequired,
+  toggleLike: PropTypes.func.isRequired,
+};
+
+export default PhotoList;
 
 
 
