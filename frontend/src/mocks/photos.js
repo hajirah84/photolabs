@@ -1,9 +1,6 @@
 const photo1 = {
   id: 1,
-  location: {
-    city: "Montreal",
-    country: "Canada"
-  },
+  location: { city: "Montreal", country: "Canada" },
   urls: {
     full: "/Image-1-Full.jpeg",
     regular: "/Image-1-Regular.jpeg"
@@ -17,10 +14,7 @@ const photo1 = {
 
 const photo2 = {
   id: 2,
-  location: {
-    city: "Toronto",
-    country: "Canada"
-  },
+  location: { city: "Toronto", country: "Canada" },
   urls: {
     full: "/Image-2-Full.jpeg",
     regular: "/Image-2-Regular.jpeg"
@@ -34,10 +28,7 @@ const photo2 = {
 
 const photo3 = {
   id: 3,
-  location: {
-    city: "Ottawa",
-    country: "Canada"
-  },
+  location: { city: "Ottawa", country: "Canada" },
   urls: {
     full: "/Image-3-Full.jpeg",
     regular: "/Image-3-Regular.jpeg"
@@ -51,10 +42,7 @@ const photo3 = {
 
 const photo4 = {
   id: 4,
-  location: {
-    city: "Quebec",
-    country: "Canada"
-  },
+  location: { city: "Quebec", country: "Canada" },
   urls: {
     full: "/Image-4-Full.jpg",
     regular: "/Image-4-Regular.jpg"
@@ -68,10 +56,7 @@ const photo4 = {
 
 const photo5 = {
   id: 5,
-  location: {
-    city: "Vancouver",
-    country: "Canada"
-  },
+  location: { city: "Vancouver", country: "Canada" },
   urls: {
     full: "/Image-5-Full.jpg",
     regular: "/Image-5-Regular.jpg"
@@ -85,10 +70,7 @@ const photo5 = {
 
 const photo6 = {
   id: 6,
-  location: {
-    city: "Montreal",
-    country: "Canada"
-  },
+  location: { city: "Montreal", country: "Canada" },
   urls: {
     full: "/Image-6-Full.jpg",
     regular: "/Image-6-Regular.jpg"
@@ -102,10 +84,7 @@ const photo6 = {
 
 const photo7 = {
   id: 7,
-  location: {
-    city: "Calgary",
-    country: "Canada"
-  },
+  location: { city: "Calgary", country: "Canada" },
   urls: {
     full: "/Image-7-Full.jpg",
     regular: "/Image-7-Regular.jpg"
@@ -119,10 +98,7 @@ const photo7 = {
 
 const photo8 = {
   id: 8,
-  location: {
-    city: "Ottawa",
-    country: "Canada"
-  },
+  location: { city: "Ottawa", country: "Canada" },
   urls: {
     full: "/Image-8-Full.jpg",
     regular: "/Image-8-Regular.jpg"
@@ -136,10 +112,7 @@ const photo8 = {
 
 const photo9 = {
   id: 9,
-  location: {
-    city: "Nova Scotia",
-    country: "Canada"
-  },
+  location: { city: "Nova Scotia", country: "Canada" },
   urls: {
     full: "/Image-9-Full.jpg",
     regular: "/Image-9-Regular.jpg"
@@ -153,10 +126,7 @@ const photo9 = {
 
 const photo10 = {
   id: 10,
-  location: {
-    city: "Edmonton",
-    country: "Canada"
-  },
+  location: { city: "Edmonton", country: "Canada" },
   urls: {
     full: "/Image-10-Full.jpg",
     regular: "/Image-10-Regular.jpg"
@@ -168,97 +138,19 @@ const photo10 = {
   }
 };
 
+// photos array with similar_photos as arrays
 const photos = [
-  {
-    ...photo1,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
-  },
-  {
-    ...photo2,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
-  },
-  {
-    ...photo3,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
-  },
-  {
-    ...photo4,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
-  },
-  {
-    ...photo5,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
-  },
-  {
-    ...photo6,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
-  },
-  {
-    ...photo7,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
-  },
-  {
-    ...photo8,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
-  },
-  {
-    ...photo9,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
-  },
-  {
-    ...photo10,
-    similar_photos: {
-      photo2,
-      photo3,
-      photo4,
-      photo5,
-    }
-  }
+  { ...photo1, similar_photos: [photo2, photo3, photo4, photo5] },
+  { ...photo2, similar_photos: [photo1, photo3, photo4, photo5] },
+  { ...photo3, similar_photos: [photo1, photo2, photo4, photo5] },
+  { ...photo4, similar_photos: [photo1, photo2, photo3, photo5] },
+  { ...photo5, similar_photos: [photo1, photo2, photo3, photo4] },
+  { ...photo6, similar_photos: [photo2, photo3, photo4, photo5] },
+  { ...photo7, similar_photos: [photo2, photo3, photo4, photo5] },
+  { ...photo8, similar_photos: [photo2, photo3, photo4, photo5] },
+  { ...photo9, similar_photos: [photo2, photo3, photo4, photo5] },
+  { ...photo10, similar_photos: [photo2, photo3, photo4, photo5] }
 ];
 
 export default photos;
+
