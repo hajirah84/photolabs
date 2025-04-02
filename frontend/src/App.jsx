@@ -1,16 +1,17 @@
 import React from 'react';
-import TopNavigationBar from './components/TopNavigationBar';
-import PhotoList from './components/PhotoList';
+import HomeRoute from './components/HomeRoute';
 import './App.scss';
 
-const App = () => (
-  <div className="App">
-    <TopNavigationBar />
-    <PhotoList />
-  </div>
-);
+const App = () => {
+  return (
+    <div className="App">
+      <HomeRoute />
+    </div>
+  );
+};
 
 export default App;
+
 
 
 
