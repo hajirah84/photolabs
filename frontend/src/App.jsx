@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import HomeRoute from './components/HomeRoute';
-import PhotoDetailsModal from './routes/PhotoDetailsModal'; // 👈 New import
+import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import photos from './mocks/photos';
 import topics from './mocks/topics';
 import './App.scss';
 
 const App = () => {
   const [likedPhotos, setLikedPhotos] = useState([]);
-  const [selectedPhoto, setSelectedPhoto] = useState(null); // 👈 New state
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const toggleLike = (photoId) => {
     setLikedPhotos((prev) =>
@@ -18,7 +18,7 @@ const App = () => {
   };
 
   const handlePhotoClick = (photo) => {
-    setSelectedPhoto(photo); // 👈 Set the clicked photo
+    setSelectedPhoto(photo);
   };
 
   return (
@@ -28,17 +28,18 @@ const App = () => {
         topics={topics}
         likedPhotos={likedPhotos}
         toggleLike={toggleLike}
-        onPhotoClick={handlePhotoClick} // 👈 Pass it down
+        onPhotoClick={handlePhotoClick}
       />
 
       {selectedPhoto && (
-        <PhotoDetailsModal />
+        <PhotoDetailsModal onClose={() => setSelectedPhoto(null)} />
       )}
     </div>
   );
 };
 
 export default App;
+
 
 
 
