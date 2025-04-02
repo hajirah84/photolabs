@@ -1,16 +1,9 @@
-// import FavIcon from './FavIcon';
-import React, { useState } from 'react';
-import { FaHeart } from 'react-icons/fa'; // 
+import React from 'react';
+import { FaHeart } from 'react-icons/fa';
 
-const PhotoFavButton = () => {
-  const [isLiked, setIsLiked] = useState(false);
-
-  const toggleLike = () => {
-    setIsLiked(prev => !prev);
-  };
-
+const PhotoFavButton = ({ isLiked, onClick }) => {
   return (
-    <div className="photo-list__fav-icon" onClick={toggleLike}>
+    <div className="photo-list__fav-icon" onClick={onClick}>
       <FaHeart
         className="photo-list__fav-icon-svg"
         color={isLiked ? 'red' : 'lightgray'}
@@ -20,4 +13,5 @@ const PhotoFavButton = () => {
 };
 
 export default PhotoFavButton;
+
 

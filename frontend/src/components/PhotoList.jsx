@@ -1,9 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import PhotoListItem from './PhotoListItem';
-import '../styles/PhotoList.scss';
-
-const PhotoList = ({ photos }) => {
+const PhotoList = ({ photos, likedPhotos, toggleLike }) => {
   return (
     <ul className="photo-list">
       {photos.map((photo) => (
@@ -16,6 +11,8 @@ const PhotoList = ({ photos }) => {
               username: photo.user.name,
               location: photo.location
             }}
+            isLiked={likedPhotos.includes(photo.id)}
+            toggleLike={toggleLike}
           />
         </li>
       ))}
@@ -23,11 +20,6 @@ const PhotoList = ({ photos }) => {
   );
 };
 
-PhotoList.propTypes = {
-  photos: PropTypes.array.isRequired
-};
-
-export default PhotoList;
 
 
 

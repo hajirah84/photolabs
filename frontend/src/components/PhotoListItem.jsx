@@ -1,29 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ photo }) => {
-  const { imageSource, profile, username, location } = photo;
+const PhotoListItem = ({ photo, isLiked, toggleLike }) => {
+  const handleClick = () => toggleLike(photo.id);
 
   return (
     <div className="photo-list__item">
       <div style={{ position: 'relative' }}>
-        <img className="photo-list__image" src={imageSource} alt="Main" />
+        <img className="photo-list__image" src={photo.imageSource} alt="Main" />
         <div style={{ position: 'absolute', top: 8, right: 8 }}>
-          <PhotoFavButton />
+          <PhotoFavButton isLiked={isLiked} onClick={handleClick} />
         </div>
       </div>
 
+      {/* photographer details */}
       <div className="photo-list__user-details">
-        <img
-          className="photo-list__user-profile"
-          src={profile}
-          alt={`${username}'s profile`}
-        />
+        <img className="photo-list__user-profile" src={photo.profile} alt="User profile" />
         <div className="photo-list__user-info">
-          <div>{username}</div>
+          <div>{photo.username}</div>
           <div className="photo-list__user-location">
-            {location.city}, {location.country}
+            {photo.location.city}, {photo.location.country}
           </div>
         </div>
       </div>
@@ -31,20 +26,6 @@ const PhotoListItem = ({ photo }) => {
   );
 };
 
-PhotoListItem.propTypes = {
-  photo: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    imageSource: PropTypes.string.isRequired,
-    profile: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    location: PropTypes.shape({
-      city: PropTypes.string.isRequired,
-      country: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-};
-
-export default PhotoListItem;
 
 
 
