@@ -1,6 +1,13 @@
 .fav-badge {
-  position: relative;
+  color: lightgray;
+  transition: color 0.2s ease;
 }
+
+.fav-badge--active {
+  color: red;
+  animation: pop 0.3s ease-in-out;
+}
+
 
 .fav-badge__count { 
 background-color: rgb(0, 0, 0);
