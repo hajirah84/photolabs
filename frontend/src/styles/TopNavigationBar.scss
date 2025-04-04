@@ -18,3 +18,13 @@
   text-underline-position: auto;
   margin-left: 24px;
 }
+.top-nav-bar__item {
+  color: #222; // off-black instead of gray
+  padding: 8px 16px;
+  font-weight: 500;
+}
+
+.top-nav-bar__item--selected {
+  color: #000;
+  border-bottom: 2px solid #000;
+}

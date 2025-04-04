@@ -12,13 +12,16 @@
 }
 
 .photo-details-modal__close-button {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  font-size: 24px;
-  background: transparent;
+  background-color: white;
   border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
   cursor: pointer;
+  margin-left: 16px;
+  margin-top: 16px;
 }
 
 .photo-details-modal__images {

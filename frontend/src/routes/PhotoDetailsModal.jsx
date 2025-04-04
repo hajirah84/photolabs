@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PhotoList from '../components/PhotoList';
+import PhotoFavButton from '../components/PhotoFavButton';
 import '../styles/PhotoDetailsModal.scss';
 
 const PhotoDetailsModal = ({ onClose, photo, likedPhotos, toggleLike }) => {
@@ -25,17 +26,33 @@ const PhotoDetailsModal = ({ onClose, photo, likedPhotos, toggleLike }) => {
 
       <div className="photo-details-modal__header">
         <img
-          className="photo-list__user-profile"
+          className="photo-details-modal__user-profile"
           src={user.profile}
           alt={user.name}
         />
-        <div className="photo-list__user-info">
+        <div className="photo-details-modal__user-info">
           <div>{user.name}</div>
-          <div className="photo-list__user-location">
+          <div className="photo-details-modal__user-location">
             {location.city}, {location.country}
           </div>
         </div>
+
+        <div
+          style={{ marginLeft: 'auto', cursor: 'pointer' }}
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleLike(photo.id);
+          }}
+        >
+          <PhotoFavButton
+            isLiked={likedPhotos.includes(photo.id)}
+            onClick={() => toggleLike(photo.id)}
+          />
+        </div>
       </div>
+
+      {/* 👉 New heading added here */}
+      <h3 className="photo-details-modal__related-heading">Related Photos</h3>
 
       <div className="photo-details-modal__images">
         <PhotoList
@@ -56,3 +73,4 @@ PhotoDetailsModal.propTypes = {
 };
 
 export default PhotoDetailsModal;
+
