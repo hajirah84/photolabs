@@ -42,7 +42,6 @@ const PhotoDetailsModal = ({ onClose, photo, likedPhotos, toggleLike }) => {
           photos={similar_photos}
           likedPhotos={likedPhotos}
           toggleLike={toggleLike}
-          onPhotoClick={() => {}} // prevent crash if modal photos are clicked
         />
       </div>
     </div>
@@ -57,7 +56,3 @@ PhotoDetailsModal.propTypes = {
 };
 
 export default PhotoDetailsModal;
-
-
-
-

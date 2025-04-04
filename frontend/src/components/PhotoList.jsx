@@ -6,22 +6,26 @@ import '../styles/PhotoList.scss';
 const PhotoList = ({ photos, likedPhotos, toggleLike, onPhotoClick }) => {
   return (
     <ul className="photo-list">
-      {photos.map((photo) => (
-        <li key={photo.id}>
-          <PhotoListItem
-            photo={{
-              id: photo.id,
-              imageSource: photo.urls.regular,
-              profile: photo.user.profile,
-              username: photo.user.name,
-              location: photo.location
-            }}
-            isLiked={likedPhotos.includes(photo.id)}
-            toggleLike={toggleLike}
-            onClick={() => onPhotoClick(photo)} // 👈 Handle click
-          />
-        </li>
-      ))}
+      {photos.map((photo) => {
+        const isLiked = likedPhotos.includes(photo.id); // ✅ Place it here
+
+        return (
+          <li key={photo.id}>
+            <PhotoListItem
+              photo={{
+                id: photo.id,
+                imageSource: photo.urls.regular,
+                profile: photo.user.profile,
+                username: photo.user.name,
+                location: photo.location
+              }}
+              isLiked={isLiked} // ✅ Pass it down
+              toggleLike={toggleLike}
+              onClick={() => onPhotoClick(photo)}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 };
@@ -33,6 +37,5 @@ PhotoList.propTypes = {
 };
 
 export default PhotoList;
-
 
 

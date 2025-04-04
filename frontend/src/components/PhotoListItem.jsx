@@ -16,7 +16,7 @@ const PhotoListItem = ({ photo, isLiked, toggleLike, onClick }) => {
         <div
           style={{ position: 'absolute', top: 8, right: 8 }}
           onClick={(e) => {
-            e.stopPropagation(); // 👈 Prevent modal from opening when clicking heart
+            e.stopPropagation(); // Prevent modal from opening when clicking heart
             handleLikeClick();
           }}
         >
