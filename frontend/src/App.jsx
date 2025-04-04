@@ -1,46 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
-import photos from './mocks/photos';
-import topics from './mocks/topics';
+import useApplicationData from './hooks/useApplicationData';
 
 const App = () => {
-  const [likedPhotos, setLikedPhotos] = useState([]);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-
-  const toggleLike = (photoId) => {
-    setLikedPhotos((prev) =>
-      prev.includes(photoId)
-        ? prev.filter((id) => id !== photoId)
-        : [...prev, photoId]
-    );
-  };
-
-  const handlePhotoClick = (photo) => {
-    setSelectedPhoto(photo);
-  };
-
-  const closeModal = () => {
-    setSelectedPhoto(null);
-  };
+  const {
+    state,
+    updateToFavPhotoIds,
+    onPhotoSelect,
+    onClosePhotoDetailsModal
+  } = useApplicationData();
 
   return (
     <div className="App">
       <HomeRoute
-        photos={photos}
-        topics={topics}
-        likedPhotos={likedPhotos}
-        toggleLike={toggleLike}
-        onPhotoClick={handlePhotoClick}
+        photos={state.photos}
+        topics={state.topics}
+        likedPhotos={state.likedPhotos}
+        toggleLike={updateToFavPhotoIds}
+        onPhotoClick={onPhotoSelect}
       />
 
-      {selectedPhoto && (
+      {state.selectedPhoto && (
         <PhotoDetailsModal
-          photo={selectedPhoto}
-          onClose={closeModal}
-          likedPhotos={likedPhotos}
-          toggleLike={toggleLike}
+          photo={state.selectedPhoto}
+          onClose={onClosePhotoDetailsModal}
+          likedPhotos={state.likedPhotos}
+          toggleLike={updateToFavPhotoIds}
         />
       )}
     </div>
@@ -48,6 +35,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
