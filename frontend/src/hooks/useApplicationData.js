@@ -34,7 +34,6 @@ function reducer(state, action) {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Fetch data on initial render
   useEffect(() => {
     Promise.all([
       axios.get('http://localhost:8001/api/photos'),
@@ -56,11 +55,20 @@ const useApplicationData = () => {
   const updateToFavPhotoIds = (photoId) =>
     dispatch({ type: 'TOGGLE_FAV_PHOTO', payload: photoId });
 
+  const fetchPhotosByTopic = (topicId) => {
+    axios.get(`http://localhost:8001/api/topics/${topicId}/photos`)
+      .then((res) => {
+        dispatch({ type: 'SET_PHOTOS', payload: res.data });
+      })
+      .catch((error) => console.error("Topic fetch error:", error));
+  };
+
   return {
     state,
     setPhotoSelected,
     closeModal,
-    updateToFavPhotoIds
+    updateToFavPhotoIds,
+    fetchPhotosByTopic
   };
 };
 

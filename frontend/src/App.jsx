@@ -1,3 +1,4 @@
+// src/App.jsx
 import React from 'react';
 import './App.scss';
 
@@ -8,26 +9,28 @@ import useApplicationData from './hooks/useApplicationData';
 const App = () => {
   const {
     state,
-    onPhotoSelect,
+    setPhotoSelected,
+    closeModal,
     updateToFavPhotoIds,
-    onClosePhotoDetailsModal
+    fetchPhotosByTopic
   } = useApplicationData();
 
   return (
     <div className="App">
       <HomeRoute
-        photos={state.photoData}
-        topics={state.topicData}
-        likedPhotos={state.favPhotoIds}
+        photos={state.photos}
+        topics={state.topics}
+        likedPhotos={state.likedPhotoIds}
         toggleLike={updateToFavPhotoIds}
-        onPhotoClick={onPhotoSelect}
+        onPhotoClick={setPhotoSelected}
+        onTopicClick={fetchPhotosByTopic}
       />
 
       {state.selectedPhoto && (
         <PhotoDetailsModal
           photo={state.selectedPhoto}
-          onClose={onClosePhotoDetailsModal}
-          likedPhotos={state.favPhotoIds}
+          onClose={closeModal}
+          likedPhotos={state.likedPhotoIds}
           toggleLike={updateToFavPhotoIds}
         />
       )}
@@ -36,6 +39,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
