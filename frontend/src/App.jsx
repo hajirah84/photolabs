@@ -9,29 +9,27 @@ import useApplicationData from './hooks/useApplicationData';
 const App = () => {
   const {
     state,
-    setPhotoSelected,
-    closeModal,
     updateToFavPhotoIds,
-    fetchPhotosByTopic
+    onPhotoSelect,
+    onClosePhotoDetailsModal,
+    fetchPhotosByTopic,
   } = useApplicationData();
 
   return (
     <div className="App">
       <HomeRoute
-        photos={state.photos}
-        topics={state.topics}
-        likedPhotos={state.likedPhotoIds}
-        toggleLike={updateToFavPhotoIds}
-        onPhotoClick={setPhotoSelected}
-        onTopicClick={fetchPhotosByTopic}
+        state={state}
+        toggleFavorite={updateToFavPhotoIds}
+        setSelectedPhoto={onPhotoSelect}
+        fetchPhotosByTopic={fetchPhotosByTopic}
       />
 
-    {state.selectedPhoto && (
+      {state.selectedPhoto && (
         <PhotoDetailsModal
           state={state}
-          closeModal={onClosePhotoDetailsModal} 
-          toggleFavorite={updateToFavPhotoIds} 
-          setSelectedPhoto={onPhotoSelect} 
+          closeModal={onClosePhotoDetailsModal}
+          toggleFavorite={updateToFavPhotoIds}
+          setSelectedPhoto={onPhotoSelect}
         />
       )}
     </div>
@@ -39,6 +37,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
