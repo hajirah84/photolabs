@@ -4,7 +4,7 @@ The PhotoLabs project for the Web Development React course programming. PhotoLab
 
 # Features:
 Features
- Browse curated topics to filter photos
+Browse curated topics to filter photos
 
 Favorite/unfavorite photos
 
@@ -25,7 +25,7 @@ Clean, modular React component architecture
 [Frontend Setup Instructions](/frontend/)
 
 # Screenshots
-!["photolabs homepage"] (https://github.com/hajirah84/photolabs/blob/main/docs/photolabshomepage.png?raw=true)
+!["PhotoLabs homepage"] (https://github.com/hajirah84/photolabs/blob/main/docs/Photolabs%20Homepage.png)
 
 # Learnings 
 This project was built to deepen understanding of:

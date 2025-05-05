@@ -2,9 +2,9 @@ import '../styles/TopicListItem.scss';
 import PropTypes from 'prop-types';
 
 
-const TopicListItem = ({ label }) => {
+const TopicListItem = ({ label, onClick }) => {
   return (
-    <li className="topic-list__item">
+    <li className="topic-list__item" onClick={onClick}>
       {label}
     </li>
   );
