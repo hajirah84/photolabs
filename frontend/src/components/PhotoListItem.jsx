@@ -1,53 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PhotoFavButton from './PhotoFavButton';
+import { FaHeart } from 'react-icons/fa';
+import '../styles/PhotoListItem.scss';
 
-const PhotoListItem = ({ photo, isLiked, toggleLike, onClick }) => {
-  const handleLikeClick = () => toggleLike(photo.id);
+const PhotoListItem = ({ photo, isFavorited, toggleFavorite, setSelectedPhoto }) => {
+  const { urls, user, location } = photo;
 
   return (
-    <div className="photo-list__item" onClick={onClick}>
-      <div style={{ position: 'relative' }}>
-        <img
-          className="photo-list__image"
-          src={photo.imageSource}
-          alt="Main"
+    <li className="photo-list__item">
+      <img
+        src={urls.regular}
+        alt="Photo"
+        className="photo-list__image"
+        onClick={setSelectedPhoto}
+      />
+
+      <div className="photo-list__fav-icon" onClick={(e) => {
+        e.stopPropagation();
+        toggleFavorite();
+      }}>
+        <FaHeart
+          className={`photo-list__fav-icon-svg ${isFavorited ? 'photo-list__fav-icon-svg--active' : ''}`}
         />
-        <div
-          style={{ position: 'absolute', top: 8, right: 8 }}
-          onClick={(e) => {
-            e.stopPropagation(); // Prevent modal from opening when clicking heart
-            handleLikeClick();
-          }}
-        >
-          <PhotoFavButton isLiked={isLiked} onClick={handleLikeClick} />
-        </div>
       </div>
+
       <div className="photo-list__user-details">
         <img
           className="photo-list__user-profile"
-          src={photo.profile}
-          alt="User profile"
+          src={user.profile}
+          alt={user.name}
         />
         <div className="photo-list__user-info">
-          <div>{photo.username}</div>
+          <div>{user.name}</div>
           <div className="photo-list__user-location">
-            {photo.location.city}, {photo.location.country}
+            {location.city}, {location.country}
           </div>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 
-
 PhotoListItem.propTypes = {
   photo: PropTypes.object.isRequired,
-  isLiked: PropTypes.bool.isRequired,
-  toggleLike: PropTypes.func.isRequired,
+  isFavorited: PropTypes.bool.isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
+  setSelectedPhoto: PropTypes.func.isRequired
 };
 
 export default PhotoListItem;
+
 
 
 

@@ -1,21 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FaHeart } from 'react-icons/fa';
-import '../styles/PhotoFavButton.scss';
+import FavIcon from "./FavIcon";
+import "../styles/PhotoFavButton.scss";
 
-const PhotoFavButton = ({ isLiked, onClick }) => {
+const PhotoFavButton = ({ isFavorited, toggleFavorite }) => {
   return (
-    <div className="photo-list__fav-icon" onClick={onClick}>
-      <FaHeart
-        className={`photo-list__fav-icon-svg ${isLiked ? 'photo-list__fav-icon-svg--active' : ''}`}
-      />
+    <div className="photo-list__fav-icon" onClick={toggleFavorite}>
+      <div className="photo-list__fav-icon-svg">
+        <FavIcon selected={isFavorited} />
+      </div>
     </div>
   );
-};
-
-PhotoFavButton.propTypes = {
-  isLiked: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default PhotoFavButton;

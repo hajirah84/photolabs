@@ -26,12 +26,12 @@ const App = () => {
         onTopicClick={fetchPhotosByTopic}
       />
 
-      {state.selectedPhoto && (
+    {state.selectedPhoto && (
         <PhotoDetailsModal
-          photo={state.selectedPhoto}
-          onClose={closeModal}
-          likedPhotos={state.likedPhotoIds}
-          toggleLike={updateToFavPhotoIds}
+          state={state}
+          closeModal={onClosePhotoDetailsModal} 
+          toggleFavorite={updateToFavPhotoIds} 
+          setSelectedPhoto={onPhotoSelect} 
         />
       )}
     </div>

@@ -8,5 +8,8 @@ The PhotoLabs project for the Web Development React course programming. PhotoLab
 
 [Frontend Setup Instructions](/frontend/)
 
+# Screenshots
+!["photolabs homepage"] (https://github.com/hajirah84/photolabs/blob/main/docs/photolabshomepage.png?raw=true)
+
 # Author
 Hajirah Mian

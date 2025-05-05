@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import TopicListItem from './TopicListItem';
+import PropTypes from 'prop-types';
 import '../styles/TopicList.scss';
 
 const TopicList = ({ topics }) => {
