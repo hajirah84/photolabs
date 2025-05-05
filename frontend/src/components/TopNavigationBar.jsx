@@ -1,25 +1,23 @@
-import TopicList from './TopicList';
-import FavBadge from './FavBadge';
-import '../styles/TopNavigationBar.scss';
+import "../styles/TopNavigationBar.scss";
+import FavBadge from "./FavBadge";
+import TopicList from "./TopicList";
 
-const TopNavigationBar = ({ topics, isFavPhotoExist, onTopicClick }) => {
+const TopNavigation = ({ topics, isFavPhotoExist, fetchPhotosByTopic }) => {
   return (
-    <div className="top-nav">
-      {topics.map((topic) => (
-        <button
-          key={topic.id}
-          onClick={() => onTopicClick(topic.id)}
-          className="topic-button"
-        >
-          {topic.title}
-        </button>
-      ))}
+    <div className="top-nav-bar">
+      {/* Application Logo */}
+      <span className="top-nav-bar__logo">PhotoLabs</span>
+
+      {/* Topic List Section */}
+      <TopicList topics={topics} fetchPhotosByTopic={fetchPhotosByTopic}/>
+
+      {/* Favorite Badge Indicator */}
+      <FavBadge isFavPhotoExist={isFavPhotoExist} />
     </div>
   );
 };
 
-
-export default TopNavigationBar;
+export default TopNavigation;
 
 
 

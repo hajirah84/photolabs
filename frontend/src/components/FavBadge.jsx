@@ -1,17 +1,12 @@
-import { FaHeart } from 'react-icons/fa';
-import '../styles/FavBadge.scss';
+import FavIcon from "./FavIcon";
+import "../styles/FavBadge.scss";
 
-const FavBadge = ({ isActive }) => {
-  const className = isActive
-    ? 'fav-badge fav-badge--active'
-    : 'fav-badge';
-
+const FavBadge = ({ isFavPhotoExist }) => {
   return (
-    <div className={className}>
-      <FaHeart />
+    <div className="fav-badge">
+      <FavIcon displayAlert={isFavPhotoExist} />
     </div>
   );
 };
 
 export default FavBadge;
-

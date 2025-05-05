@@ -1,29 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import PhotoListItem from './PhotoListItem';
-import '../styles/PhotoList.scss';
+import "../styles/PhotoList.scss";
+import PhotoListItem from "./PhotoListItem";
 
-const PhotoList = ({ photos, favPhotos = [], toggleFavorite, setSelectedPhoto }) => {
+const PhotoList = ({ photos, likedPhotoIds, toggleFavorite, onPhotoSelect }) => {
+
   return (
     <ul className="photo-list">
       {photos.map((photoItem) => (
         <PhotoListItem
           key={photoItem.id}
-          photo={photoItem}
-          isFavorited={favPhotos.includes(photoItem.id)}
-          toggleFavorite={() => toggleFavorite(photoItem.id)}
-          setSelectedPhoto={() => setSelectedPhoto(photoItem)}
+          photo={photoItem.urls.regular}
+          username={photoItem.user.name}
+          profile={photoItem.user.profile}
+          location={photoItem.location}
+          //isFavorited={likedPhotoIds.includes(photoItem.id)}
+          isFavorited={likedPhotoIds?.includes(photoItem.id) || false} 
+          toggleFavorite={() => toggleFavorite(photoItem.id)} // Toggle favorite state 
+          setSelectedPhoto={() => 
+            onPhotoSelect({
+              ...photoItem,
+              similar_photos: photoItem.similar_photos || [],
+            })
+          } 
         />
       ))}
     </ul>
   );
-};
-
-PhotoList.propTypes = {
-  photos: PropTypes.array.isRequired,
-  favPhotos: PropTypes.array,
-  toggleFavorite: PropTypes.func.isRequired,
-  setSelectedPhoto: PropTypes.func.isRequired
 };
 
 export default PhotoList;

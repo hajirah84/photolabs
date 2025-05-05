@@ -1,51 +1,46 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { FaHeart } from 'react-icons/fa';
-import '../styles/PhotoListItem.scss';
+import "../styles/PhotoListItem.scss";
+import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photo, isFavorited, toggleFavorite, setSelectedPhoto }) => {
-  const { urls, user, location } = photo;
-
+const PhotoListItem = ({
+  photo,
+  username,
+  profile,
+  location,
+  isFavorited,
+  toggleFavorite,
+  setSelectedPhoto,
+}) => {
   return (
-    <li className="photo-list__item">
+    <div className="photo-list__item">
+      {/* Favorite button */}
+      <PhotoFavButton
+        isFavorited={isFavorited}
+        toggleFavorite={toggleFavorite}
+      />
+
       <img
-        src={urls.regular}
-        alt="Photo"
+        src={photo}
+        alt={`Photo taken by ${username}`}
         className="photo-list__image"
         onClick={setSelectedPhoto}
       />
 
-      <div className="photo-list__fav-icon" onClick={(e) => {
-        e.stopPropagation();
-        toggleFavorite();
-      }}>
-        <FaHeart
-          className={`photo-list__fav-icon-svg ${isFavorited ? 'photo-list__fav-icon-svg--active' : ''}`}
-        />
-      </div>
-
+      {/* Photographer details*/}
       <div className="photo-list__user-details">
         <img
+          src={profile}
+          alt={`Profile picture of ${username}`}
           className="photo-list__user-profile"
-          src={user.profile}
-          alt={user.name}
         />
         <div className="photo-list__user-info">
-          <div>{user.name}</div>
+          <div className="photo-list__user-name">{username}</div>
           <div className="photo-list__user-location">
             {location.city}, {location.country}
           </div>
         </div>
       </div>
-    </li>
+    </div>
   );
-};
-
-PhotoListItem.propTypes = {
-  photo: PropTypes.object.isRequired,
-  isFavorited: PropTypes.bool.isRequired,
-  toggleFavorite: PropTypes.func.isRequired,
-  setSelectedPhoto: PropTypes.func.isRequired
 };
 
 export default PhotoListItem;

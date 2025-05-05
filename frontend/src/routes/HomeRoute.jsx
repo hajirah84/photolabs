@@ -1,31 +1,34 @@
-import React from "react";
-import TopNavigationBar from "../components/TopNavigationBar";
-import PhotoList from "../components/PhotoList";
 import "../styles/HomeRoute.scss";
+import TopNavigation from "../components/TopNavigationBar";
+import PhotoList from "../components/PhotoList";
+import PhotoFavButton from "../components/PhotoFavButton";
+
 
 const HomeRoute = ({
-  photos,
-  topics,
-  likedPhotos,
-  toggleLike,
-  onPhotoClick,
-  onTopicClick
+  state,
+  toggleFavorite,
+  setSelectedPhoto,
+  fetchPhotosByTopic,
 }) => {
-  const isFavPhotoExist = likedPhotos.length > 0;
-
+  const { photos, topics, likedPhotoIds } = state;
   return (
     <div className="home-route">
-      <TopNavigationBar
-        topics={topics}
-        isFavPhotoExist={isFavPhotoExist}
-        onTopicClick={onTopicClick}
+      {/* Render  top navigation bar */}
+      <TopNavigation
+        topics={state.topics}
+        isFavPhotoExist={state?.favPhotos === undefined ? [] :  Object.values(state.favPhotos).some(Boolean)} // Check if any photo is favorited
+        fetchPhotosByTopic={fetchPhotosByTopic}
       />
+
+      {/* Render photos, passing necessary props */}
       <PhotoList
-        photos={photos}
-        likedPhotos={likedPhotos}
-        toggleLike={toggleLike}
-        onPhotoClick={onPhotoClick}
+        photos={state.photos}
+        //favPhotos={state.favPhotos}
+        likedPhotoIds={likedPhotoIds}
+        toggleFavorite={toggleFavorite}
+        onPhotoSelect={setSelectedPhoto}
       />
+
     </div>
   );
 };
